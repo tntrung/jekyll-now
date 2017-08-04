@@ -11,7 +11,7 @@ title: Learning Keras by examples!
 
 ## Example 1: Linear regression
 
-```
+```python
 import keras
 from keras.models import Sequential
 from keras.layers import Dense
