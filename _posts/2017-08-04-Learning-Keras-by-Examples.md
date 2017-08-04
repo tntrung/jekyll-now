@@ -5,11 +5,17 @@ title: Learning Keras by examples!
 
 # What is Keras?
 
+Keras is a high-level Python API, which is designed to quickly build and train neural networks using either `TensorFlow` or `Theano`. It is developed by François Chollet.
+
+# Why Keras?
+
+Keras is hailed to ...
+
 # Installing Keras on TensorFlow
 
 # Learning Keras by examples
 
-## Example 1: Linear regression
+## Example 1: 1-D Linear regression
 
 ```python
 import keras
