@@ -21,6 +21,8 @@ Let's start Keras excervise by the simple classification problem by using linear
 
 ## Example 1: MNIST classification by linear model and softmax
 
+### TensofFlow
+
 ``Data preparation``: Tensorflow provide function that we can easily download and prepare MNIST data by one line of Python code. To facilitate for our learning and implementation in the next lesson, we put the code in a single file: e.g. `datatool/datasets.py`.
 
 ```python
@@ -138,9 +140,6 @@ y_ = tf.placeholder(tf.float32,[None,10])
 W = tf.Variable(tf.zeros([784,10]))
 b = tf.Variable(tf.zeros([10]))
 
-#y = tf.nn.softmax(tf.matmul(x, W) + b)
-#cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y),reduction_indices=[1]))
-
 y = tf.matmul(x, W) + b
 cross_entropy = tf.reduce_mean(
       tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y))
@@ -162,6 +161,26 @@ with tf.Session() as sess:
 	  	sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
   	# evaluation
 	print(sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels}))
+```
+
+### Keras
+
+In this session, we replace some TF code segment by Keras which help you to understand the relationship and difference between TF and Keras.
+
+Model definition from TF:
+
+```python
+W = tf.Variable(tf.zeros([784,10]))
+b = tf.Variable(tf.zeros([10]))
+y = tf.nn.softmax(tf.matmul(x, W) + b)
+```
+
+To Keras:
+
+```python
+from keras.layers import Dense
+
+y = Dense(10, activation='softmax')(x)
 ```
 
 *To be continued*
