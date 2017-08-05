@@ -63,4 +63,23 @@ W = tf.Variable(tf.zeros([784,10]))
 b = tf.Variable(tf.zeros([10]))
 ```
 
+We then can define the model and define loss function of cross entropy:
+
+```python
+y = tf.nn.softmax(tf.matmul(x, W) + b)
+cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y),reduction_indices=[1]))
+```
+
+`tf.nn.softmax` to compute softmax function. Because `_y` and `y` are matrices of `[None,10]`. `y_ * tf.log(y)` is the element-wise multiplication, and `tf.reduce_sum(y_ * tf.log(y),reduction_indices=[1])` computes sum of elements of each row. To understand more about the function `tf.reduce_sum`, let's take a look this example:
+
+```
+# 'x' is [[1, 1, 1]
+#         [1, 1, 1]]
+tf.reduce_sum(x) ==> 6
+tf.reduce_sum(x, 0) ==> [2, 2, 2]
+tf.reduce_sum(x, 1) ==> [3, 3]
+tf.reduce_sum(x, 1, keep_dims=True) ==> [[3], [3]]
+tf.reduce_sum(x, [0, 1]) ==> 6
+```
+
 *To be continued*
