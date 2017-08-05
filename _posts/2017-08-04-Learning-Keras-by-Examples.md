@@ -165,7 +165,7 @@ with tf.Session() as sess:
 
 ### Keras
 
-In this session, we replace some TF code segment by Keras which help you to understand the relationship and difference between TF and Keras.
+In this session, we replace some segments from TF to Keras, which try to minimize the change to see the efficiency of Keras:
 
 Model definition from TF:
 
@@ -175,7 +175,7 @@ b = tf.Variable(tf.zeros([10]))
 y = tf.nn.softmax(tf.matmul(x, W) + b)
 ```
 
-To Keras:
+To Keras which provide the layer `Dense` (fully-connected layer) can operate similarly, but shorter:
 
 ```python
 from keras.layers import Dense
