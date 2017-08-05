@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Learning basic TensorFlow, Keras and Convolutional Neural Network (CNN) by examples!
+title: Learning basic TensorFlow, Keras and Convolutional Neural Network (CNN) by examples! - Part I
 ---
 
 In this tutorial, we learn TensorFlow, Keras by going step by step from simple thing to recent state-of-the-art neural network in computer vision. At the beginning of the tutorial, we learn how to implement convolutional neural networks by TensorFlow and more efficient tool Keras. We start with simple to get familiar with them. Towards the end of this tutorial, you can go advance to implement from the scratch state-of-the-art convolution neural networks: VGG, Inception V4, DenseNet, etc.
