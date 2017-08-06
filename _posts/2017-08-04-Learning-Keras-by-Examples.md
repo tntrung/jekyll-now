@@ -164,7 +164,7 @@ with tf.Session() as sess:
 	print("Accuracy: ", sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels}))
 ```
 
-Run they program:
+Run TF program:
 
 ```
 >> python tf_mnist_softmax.py
@@ -252,5 +252,16 @@ with tf.Session() as sess:
   # evaluation
 	print("Accuracy: ", sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels}))
 ```
+
+Run new program and obtain the similar accuracy as above:
+
+```
+>> python keras_mnist_softmax.py
+
+>> ('Accuracy: ', 0.91790003)
+```
+
+However, in this case we use Keras only as shortcut to map inputs to outputs, and built-in functions provided in Keras. The optimization is done via native TF optimizer rather than Keras optimizer. We do not even use Keras Model at all.
+
 
 *To be continued*
