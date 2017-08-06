@@ -124,7 +124,7 @@ Each batch has 100 samples, and you need to specify the value of the learning ph
 print(sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels}))
 ```
 
-The complete code is here:
+The complete code is here `tf_mnist_softmax.py`:
 
 ```python
 #!/usr/bin/python
@@ -141,6 +141,7 @@ W = tf.Variable(tf.zeros([784,10]))
 b = tf.Variable(tf.zeros([10]))
 
 y = tf.matmul(x, W) + b
+# The loss function by cross entropy
 cross_entropy = tf.reduce_mean(
       tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y))
 
@@ -151,21 +152,29 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 train_step  = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy)
 
 with tf.Session() as sess:
-  	# init the variables
+  # init the variables
 	sess.run(tf.global_variables_initializer())
-  	# training with 1000 iterations
+  # training with 1000 iterations
 	for _ in range(1000):
-      		# 100 sample per batch
+      # 100 sample per batch
 	  	batch_xs, batch_ys = mnist.train.next_batch(100)
-      		# run training
+      # run training
 	  	sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
-  	# evaluation
-	print(sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels}))
+	# evaluation
+	print("Accuracy: ", sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels}))
 ```
 
-### Keras
+Run they program:
 
-In this session, we replace some segments from TF to Keras, which try to keep the smooth transition and minimize the change:
+```
+>> python tf_mnist_softmax.py
+
+>> ('Accuracy: ', 0.91909999)
+```
+The accuracy is about `92%`, which is not good on MNIST, because we used only one fully-connected layer. We'll try to improve the accuracy in next examples.
+
+### Keras
+In this session, we try to simplify TF by Keras, and minimize the change to keep the transition smooth:
 
 Model definition from TF:
 
@@ -175,12 +184,73 @@ b = tf.Variable(tf.zeros([10]))
 y = tf.nn.softmax(tf.matmul(x, W) + b)
 ```
 
-To Keras which provide the layer `Dense` (fully-connected layer) can operate similarly, but shorter:
+To Keras which provide the layer `Dense` (fully-connected layer) can operate in similar, but shorter way:
 
 ```python
 from keras.layers import Dense
 
 y = Dense(10, activation='softmax')(x)
+```
+The loss function defined above of TF:
+
+```python
+# The loss function by cross entropy
+cross_entropy = tf.reduce_mean(
+      tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y))
+
+# Test trained model
+correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
+```
+
+can be replaced by a built-in function of Keras:
+
+```python
+from keras.objectives import categorical_crossentropy
+from keras.metrics import categorical_accuracy as accuracy_eval
+
+cross_entropy = tf.reduce_mean(categorical_crossentropy(y_, y))
+
+# Test trained model
+correct_prediction = accuracy_eval(y_, y)
+```
+
+The complete code with Keras is here `keras_mnist_softmax.py`:
+
+```python
+#!/usr/bin/python
+
+import tensorflow as tf
+from datatool.datasets import read_tf_mnist
+import keras
+from keras.layers import Dense
+from keras.objectives import categorical_crossentropy
+from keras.metrics import categorical_accuracy as accuracy_eval
+
+mnist = read_tf_mnist("MNIST_data")
+
+x  = tf.placeholder(tf.float32,[None,784])
+y_ = tf.placeholder(tf.float32,[None,10])
+
+y = Dense(10, activation='softmax')(x)  # fully-connected layer of output layer of 10 units with a softmax activation
+cross_entropy = tf.reduce_mean(categorical_crossentropy(y_, y))
+
+# Test trained model
+correct_prediction = accuracy_eval(y_, y)
+accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+
+train_step  = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy)
+
+with tf.Session() as sess:
+  # init the variables
+	sess.run(tf.global_variables_initializer())
+  # training with 1000 iterations
+	for _ in range(1000):
+      # 100 sample per batch
+	  	batch_xs, batch_ys = mnist.train.next_batch(100)
+      # run training
+	  	sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
+  # evaluation
+	print("Accuracy: ", sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels}))
 ```
 
 *To be continued*
