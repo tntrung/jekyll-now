@@ -263,5 +263,6 @@ Run new program and obtain the similar accuracy as above:
 
 However, in this case we use Keras only as shortcut to map inputs to outputs, and built-in functions provided in Keras. The optimization is done via native TF optimizer rather than Keras optimizer. We do not even use Keras Model at all.
 
+## Example 2: MNIST classification by LeNet
 
 *To be continued*
