@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Learning basic TensorFlow, Keras and Convolutional Neural Network (CNN) by examples! - Part I
+title: Learning basic TensorFlow, Keras for CNN implementation by examples! - Part I
 ---
 
-In this tutorial, we learn TensorFlow, Keras by going step by step from simple thing to recent state-of-the-art neural network in computer vision. At the beginning of the tutorial, we learn how to implement convolutional neural networks by TensorFlow and more efficient tool Keras. We start with simple to get familiar with them. Towards the end of this tutorial, you can go advance to implement from the scratch state-of-the-art convolution neural networks: VGG, Inception V4, DenseNet, etc.
+In this tutorial, we learn TensorFlow, Keras by going step by step from simple thing to recent state-of-the-art neural network in computer vision. At the beginning of the tutorial, we learn how to implement Convolutional Neural Networks (CNN) by TensorFlow and more efficient tool Keras. Towards the end of this tutorial, you can go advance to implement from the scratch state-of-the-art CNN, such as: VGG, Inception V4, DenseNet, etc. If you are not familiar with CNN, I recommend to take a look this tutorial first: [http://cs231n.github.io/convolutional-networks/](http://cs231n.github.io/convolutional-networks/)
 
 # What is Keras?
 
@@ -165,7 +165,7 @@ with tf.Session() as sess:
 
 ### Keras
 
-In this session, we replace some segments from TF to Keras, which try to minimize the change to see the efficiency of Keras:
+In this session, we replace some segments from TF to Keras, which try to keep the smooth transition and minimize the change:
 
 Model definition from TF:
 
