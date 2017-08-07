@@ -271,6 +271,6 @@ In this tutorial, we will improve the accuracy by using LeNet, a first architect
 
 LeNet is the first CNN designed primarily for OCR and character recognition in documents. It is straightforward and pretty small, making it perfect for learning basics of CNN. It can even run on CPU, which is good if your system doesn't support GPU. The architecture of LeNet consists of following layers: Two convolution layers (each layer followed by ReLU (Rectified Linear Unit) + Pooling), one Fully-Connected (FC) layer + ReLU, and the last FC:
 
-![alt text](./images/lenet5.png "Fig. 1: LeNet architecture.")
+![alt text](https://tntrung.github.io/images/lenet5.png "Fig. 1: LeNet architecture.")
 
 *To be continued*
