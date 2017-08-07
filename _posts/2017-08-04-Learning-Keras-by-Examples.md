@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Learning basic TensorFlow, Keras for CNN implementation by examples! - Part I
+title: Learning basic TensorFlow, Keras by examples of CNN implementation! - Part I
 ---
 
 In this tutorial, we learn TensorFlow, Keras by going step by step from simple thing to recent state-of-the-art neural network in computer vision. At the beginning of the tutorial, we learn how to implement Convolutional Neural Networks (CNN) by TensorFlow and more efficient tool Keras. Towards the end of this tutorial, you can go advance to implement from the scratch state-of-the-art CNN, such as: VGG, Inception V4, DenseNet, etc. If you are not familiar with CNN, I recommend to take a look this tutorial first: [http://cs231n.github.io/convolutional-networks/](http://cs231n.github.io/convolutional-networks/)
@@ -272,6 +272,14 @@ LeNet is the first CNN designed primarily for OCR and character recognition in d
 ![alt text](https://tntrung.github.io/images/lenet5.png "Fig. 1: LeNet architecture.")
 
 ```
-INPUT => CONV => RELU => POOL => CONV => RELU => POOL => FC => RELU => FC
+INPUT => CONV(5x5x20) => RELU => POOL => CONV(5x5x50) => RELU => POOL => FC(500) => RELU => FC(10)
 ```
+
+We implement the netork model in TF:
+
+```python
+def lenet ():
+
+```
+
 *To be continued*
