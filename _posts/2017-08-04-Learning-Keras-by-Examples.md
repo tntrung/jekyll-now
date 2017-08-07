@@ -5,11 +5,11 @@ title: Learning basic TensorFlow, Keras for CNN implementation by examples! - Pa
 
 In this tutorial, we learn TensorFlow, Keras by going step by step from simple thing to recent state-of-the-art neural network in computer vision. At the beginning of the tutorial, we learn how to implement Convolutional Neural Networks (CNN) by TensorFlow and more efficient tool Keras. Towards the end of this tutorial, you can go advance to implement from the scratch state-of-the-art CNN, such as: VGG, Inception V4, DenseNet, etc. If you are not familiar with CNN, I recommend to take a look this tutorial first: [http://cs231n.github.io/convolutional-networks/](http://cs231n.github.io/convolutional-networks/)
 
-# What is Keras?
+# What is TensorFlow (TF) and Keras?
 
 Keras is a high-level Python API, which is designed to quickly build and train neural networks using either `TensorFlow` or `Theano`. It is developed by François Chollet.
 
-# Why Keras?
+# Why TF and Keras?
 
 Keras is hailed to be the future of deep learning framework.
 
@@ -19,9 +19,11 @@ Keras is hailed to be the future of deep learning framework.
 
 Let's start Keras excervise by the simple classification problem by using linear regression and `softmax`, which is often considered as the hello world lesson in machine learning.
 
-## Example 1: MNIST classification by linear model and softmax
+## Example 1: MNIST classification by logistic regression
 
-### TensofFlow
+### MNIST dataset
+
+### TensorFlow implementation
 
 ``Data preparation``: Tensorflow provide function that we can easily download and prepare MNIST data by one line of Python code. To facilitate for our learning and implementation in the next lesson, we put the code in a single file: e.g. `datatool/datasets.py`.
 
@@ -65,7 +67,7 @@ W = tf.Variable(tf.zeros([784,10]))
 b = tf.Variable(tf.zeros([10]))
 ```
 
-For similicity, we initialize `W` and `b` with zero matrices by `tf.zeros` which works with linear model. However, the zero weights are not applicable for deep neural network in the next examples. We then can define the model and define loss function of cross entropy:
+For similarity, we initialize `W` and `b` with zero matrices by `tf.zeros` which works with linear model. However, the zero weights are not applicable for deep neural network in the next examples. We then can define the model and define loss function of cross entropy:
 
 ```python
 y = tf.nn.softmax(tf.matmul(x, W) + b)
@@ -264,5 +266,11 @@ Run new program and obtain the similar accuracy as above:
 However, in this case we use Keras only as shortcut to map inputs to outputs, and built-in functions provided in Keras. The optimization is done via native TF optimizer rather than Keras optimizer. We do not even use Keras Model at all.
 
 ## Example 2: MNIST classification by LeNet
+
+In this tutorial, we will improve the accuracy by using LeNet, a first architecturee of CNN first introduced by Lecun et al, 1998 in their paper: [Gradient-Based Learning Applied to Document Recognition](http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf). We learn how to implement this network architecture in native TF, and by using Model of Keras. But, let's start with the basic understanding of LeNet.
+
+LeNet is the first CNN designed primarily for OCR and character recognition in documents. It is straightforward and pretty small, making it perfect for learning basics of CNN. It can even run on CPU, which is good if your system doesn't support GPU. The architecture of LeNet consists of following layers: Two convolution layers (each layer followed by ReLU (Rectified Linear Unit) + Pooling), one Fully-Connected (FC) layer + ReLU, and the last FC:
+
+![alt text](./images/lenet5.png "Fig. 1: LeNet architecture.")
 
 *To be continued*
