@@ -170,7 +170,6 @@ Run TF program:
 
 ```
 >> python tf_mnist_softmax.py
-
 >> ('Accuracy: ', 0.91909999)
 ```
 The accuracy is about `92%`, which is not good on MNIST, because we used only one fully-connected layer. We'll try to improve the accuracy in next examples.
@@ -259,7 +258,6 @@ Run new program and obtain the similar accuracy as above:
 
 ```
 >> python keras_mnist_softmax.py
-
 >> ('Accuracy: ', 0.91790003)
 ```
 
@@ -273,4 +271,7 @@ LeNet is the first CNN designed primarily for OCR and character recognition in d
 
 ![alt text](https://tntrung.github.io/images/lenet5.png "Fig. 1: LeNet architecture.")
 
+```
+INPUT => CONV => RELU => POOL => CONV => RELU => POOL => FC => RELU => FC
+```
 *To be continued*
