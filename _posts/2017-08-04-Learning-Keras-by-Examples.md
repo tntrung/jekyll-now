@@ -278,8 +278,12 @@ INPUT => CONV(5x5x20) => RELU => POOL => CONV(5x5x50) => RELU => POOL => FC(500)
 We implement the netork model in TF:
 
 ```python
-def lenet ():
+def lenet5 ():
 
+```
+
+```
+('Test accuracy: ', 0.99040002)
 ```
 
 *To be continued*
