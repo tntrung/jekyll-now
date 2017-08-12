@@ -480,7 +480,7 @@ from datatool.datasets import read_tf_mnist, resize_mnist_32x32
 from layers import cnn_layers as cnn
 
 # LeNet 5 architecture
-# INPUT(28x28)
+# INPUT(32x32)
 # => CONV(F: 5x5x6 -> O: 28x28x6)
 # => RELU(28x28x6)
 # => POOL(14x14x6)
