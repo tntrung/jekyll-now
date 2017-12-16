@@ -1,5 +1,5 @@
 ---
 layout: post
-title: Understanding Variational Lower Bound
+title: Mode collapse in Generative Adversarial Networks
 ---
 
